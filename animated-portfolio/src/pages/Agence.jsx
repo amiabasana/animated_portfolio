@@ -1,27 +1,26 @@
 import React, { useRef } from "react";
-import {useGSAP} from '@gsap/react';
+import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/all";
 
 const Agence = () => {
-
   const imageArray = [
-    'https://k72.ca/uploads/teamMembers/joel_480X640_3-480x640.jpg',
-    'https://k72.ca/uploads/teamMembers/MEGGIE_480X640_2-480x640.jpg',
-    'https://k72.ca/uploads/teamMembers/MAXIME_480X640_2-480x640.jpg',
-    'https://k72.ca/uploads/teamMembers/CAMILLE_480X640_2-480x640.jpg',
-    'https://k72.ca/uploads/teamMembers/MEL_480X640-480x640.jpg',
-    'https://k72.ca/uploads/teamMembers/Michele_480X640-480x640.jpg',
-    'https://k72.ca/uploads/teamMembers/Claire_480x640-480x640.jpg',
-    'https://k72.ca/uploads/teamMembers/MyleneS_480x640-480x640.jpg',
-    'https://k72.ca/uploads/teamMembers/ChantalG_480x640-480x640.jpg',
-    'https://k72.ca/uploads/teamMembers/HugoJoseph_480x640-480x640.jpg',
-    'https://k72.ca/uploads/teamMembers/Lawrence_480x640-480x640.jpg',
-    'https://k72.ca/uploads/teamMembers/Olivier_480x640-480x640.jpg',
-    'https://k72.ca/uploads/teamMembers/Carl_480x640-480x640.jpg',
-    'https://k72.ca/uploads/teamMembers/SophieA_640X960-640x960.jpg',
-    'https://k72.ca/uploads/teamMembers/MEGGIE_640X980_2-640x960.jpg'
-  ]
+    "https://k72.ca/uploads/teamMembers/joel_480X640_3-480x640.jpg",
+    "https://k72.ca/uploads/teamMembers/MEGGIE_480X640_2-480x640.jpg",
+    "https://k72.ca/uploads/teamMembers/MAXIME_480X640_2-480x640.jpg",
+    "https://k72.ca/uploads/teamMembers/CAMILLE_480X640_2-480x640.jpg",
+    "https://k72.ca/uploads/teamMembers/MEL_480X640-480x640.jpg",
+    "https://k72.ca/uploads/teamMembers/Michele_480X640-480x640.jpg",
+    "https://k72.ca/uploads/teamMembers/Claire_480x640-480x640.jpg",
+    "https://k72.ca/uploads/teamMembers/MyleneS_480x640-480x640.jpg",
+    "https://k72.ca/uploads/teamMembers/ChantalG_480x640-480x640.jpg",
+    "https://k72.ca/uploads/teamMembers/HugoJoseph_480x640-480x640.jpg",
+    "https://k72.ca/uploads/teamMembers/Lawrence_480x640-480x640.jpg",
+    "https://k72.ca/uploads/teamMembers/Olivier_480x640-480x640.jpg",
+    "https://k72.ca/uploads/teamMembers/Carl_480x640-480x640.jpg",
+    "https://k72.ca/uploads/teamMembers/SophieA_640X960-640x960.jpg",
+    "https://k72.ca/uploads/teamMembers/MEGGIE_640X980_2-640x960.jpg",
+  ];
 
   const imageDivRef = useRef(null);
   const imageRef = useRef(null);
@@ -29,43 +28,48 @@ const Agence = () => {
   gsap.registerPlugin(ScrollTrigger);
 
   useGSAP(() => {
-    gsap.to(imageDivRef.current,{
-      scrollTrigger:{
-          trigger: imageDivRef.current,
-          start: 'top 20%',
-          end: 'top -155%',
-          scrub: true,
-          pin: true,
-          onUpdate: (element) => {
-            let imageIndex;
-            if(element.progress < 1){
-            imageIndex = Math.round(element.progress * imageArray.length)
-            }else{
-              imageIndex = imageArray.length-1
-            }
-            imageRef.current.src = imageArray[imageIndex];
+    gsap.to(imageDivRef.current, {
+      scrollTrigger: {
+        trigger: imageDivRef.current,
+        start: "top 0%",
+        end: "top -160%",
+        scrub: 1,
+        anticipatePin: 1,
+        invalidateOnRefresh: true,
+        pin: true,
+        pinSpacing: true,
+        pinReparent: true,
+        pinType: "transform",
+        onUpdate: (element) => {
+          let imageIndex;
+          if (element.progress < 1) {
+            imageIndex = Math.round(element.progress * imageArray.length);
+          } else {
+            imageIndex = imageArray.length - 1;
           }
-      }
-    })
-  })
-
-
+          imageRef.current.src = imageArray[imageIndex];
+        },
+      },
+    });
+  });
 
   return (
-    <div>
-      <div className="section-1">
-        <div ref={imageDivRef}
-          className="absolute h-[20vw] w-[15vw] rounded-2xl top-36 left-[30vw]
+    <div className="parent">
+      <div id="page-1" className="py-1">
+        <div
+          ref={imageDivRef}
+          className="absolute h-[20vw] w-[15vw] rounded-3xl top-36 left-[30vw]
       overflow-hidden"
         >
-          <img ref={imageRef}
+          <img
+            ref={imageRef}
             className="h-full w-full object-cover"
             src="https://k72.ca/uploads/teamMembers/Carl_480x640-480x640.jpg"
             alt="agence images"
           />
         </div>
         <div className="font-[font2] relative">
-          <div className="mt-[56.6vh]">
+          <div className="mt-[55.6vh]">
             <h1 className="text-[20vw] text-center uppercase leading-[17vw]">
               Soixan7e <br />
               Douze
@@ -85,7 +89,7 @@ const Agence = () => {
         </div>
       </div>
 
-      <div className="section2 h-screen"></div>
+      <div id="page-2" className="h-screen"></div>
     </div>
   );
 };
