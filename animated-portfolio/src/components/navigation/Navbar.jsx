@@ -1,7 +1,9 @@
-import React, { useRef } from "react";
+import React, { useContext, useRef } from "react";
+import { NavbarContext } from "../../context/NavContext";
 
 const Navbar = () => {
     const navRightRef = useRef(null);
+    const [navOpen, setNavOpen] = useContext(NavbarContext);
   return (
     <div className="fixed top-0 w-full items-start justify-between flex z-10">
       <div className="p-5">
@@ -21,9 +23,17 @@ const Navbar = () => {
       </div>
       <div onMouseEnter={() => {
         navRightRef.current.style.height = '100%'
-      }} onMouseLeave={() => navRightRef.current.style.height = "0%"} className="h-14 w-[14vw] bg-black relative">
-        <div ref={navRightRef} className="bg-[#D3FD50] absolute top-0 h-0 w-full"></div>
-        <div className="relative"></div>
+      }} 
+      onMouseLeave={() => {
+        navRightRef.current.style.height = "0%"
+      }}
+      onClick={() => setNavOpen(true)}
+      className="h-14 w-[14vw] bg-black relative cursor-pointer">
+        <div ref={navRightRef} className="bg-[#D3FD50] absolute top-0 h-0 w-full transition-all"></div>
+        <div className="relative flex items-end flex-col gap-1.5 justify-center h-full px-12">
+          <div className="w-14 h-0.5 bg-white"></div>
+          <div className="w-8 h-0.5 bg-white"></div>
+        </div>
       </div>
     </div>
   );
