@@ -6,8 +6,8 @@ const Navbar = () => {
     const [navOpen, setNavOpen] = useContext(NavbarContext);
   return (
     <div className="fixed top-0 w-full items-start justify-between flex z-10">
-      <div className="p-5">
-        <div className="w-28">
+      <div className="lg:p-5 p-2">
+        <div className="lg:w-28 w-24">
           <svg
             className="w-full"
             xmlns="http://www.w3.org/2000/svg"
@@ -28,11 +28,11 @@ const Navbar = () => {
         navRightRef.current.style.height = "0%"
       }}
       onClick={() => setNavOpen(true)}
-      className="h-14 w-[14vw] bg-black relative cursor-pointer">
+      className="lg:h-16 h-11 lg:w-[16vw] w-40 bg-black relative cursor-pointer">
         <div ref={navRightRef} className="bg-[#D3FD50] absolute top-0 h-0 w-full transition-all"></div>
-        <div className="relative flex items-end flex-col gap-1.5 justify-center h-full px-12">
-          <div className="w-14 h-0.5 bg-white"></div>
-          <div className="w-8 h-0.5 bg-white"></div>
+        <div className="relative flex items-end flex-col lg:gap-1.5 gap-1 justify-center h-full lg:px-12 px-8">
+          <div className="lg:w-14 w-12 lg:h-0.5 h-[1.5px] bg-white"></div>
+          <div className="lg:w-8 w-6 lg:h-0.5 h-[1.5px] bg-white"></div>
         </div>
       </div>
     </div>

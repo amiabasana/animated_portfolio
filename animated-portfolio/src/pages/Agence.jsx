@@ -58,7 +58,7 @@ const Agence = () => {
       <div id="page-1" className="py-1">
         <div
           ref={imageDivRef}
-          className="absolute h-[20vw] w-[15vw] rounded-3xl top-36 left-[30vw]
+          className="absolute lg:h-[20vw] h-[30vw] lg:w-[15vw] w-[20vw] lg:rounded-3xl rounded-xl lg:top-36 top-28 left-[30vw]
       overflow-hidden"
         >
           <img
@@ -69,15 +69,14 @@ const Agence = () => {
           />
         </div>
         <div className="font-[font2] relative">
-          <div className="mt-[55.6vh]">
-            <h1 className="text-[20vw] text-center uppercase leading-[17vw]">
+          <div className="lg:mt-[55.6vh] mt-[25vh]">
+            <h1 className="lg:text-[20vw] text-[18vw] text-center uppercase leading-[17vw]">
               Soixan7e <br />
               Douze
             </h1>
           </div>
-          <div className="pl-[40%] mt-4">
-            <p className="text-6xl">
-              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Notre
+          <div className="lg:pl-[40%] mt-4">
+            <p className="lg:text-6xl text-[20px] lg:leading-14 leading-6 lg:indent-80 indent-20">Notre
               curiosité nourrit notre créativité. On reste humbles et on dit non
               aux gros egos, même le vôtre. Une marque est vivante. Elle a des
               valeurs, une personnalité, une histoire. Si on oublie ça, on peut
