@@ -3,7 +3,13 @@ import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/all";
 
+gsap.registerPlugin(ScrollTrigger);
+
 const Agence = () => {
+  
+  const imageDivRef = useRef(null);
+  const imageRef = useRef(null);
+
   const imageArray = [
     "https://k72.ca/uploads/teamMembers/joel_480X640_3-480x640.jpg",
     "https://k72.ca/uploads/teamMembers/MEGGIE_480X640_2-480x640.jpg",
@@ -22,18 +28,28 @@ const Agence = () => {
     "https://k72.ca/uploads/teamMembers/MEGGIE_640X980_2-640x960.jpg",
   ];
 
-  const imageDivRef = useRef(null);
-  const imageRef = useRef(null);
-
-  gsap.registerPlugin(ScrollTrigger);
 
   useGSAP(() => {
+
+  const getValues = () => {
+    if (window.innerWidth >= 1024) {
+      // Desktop
+      return { start: "top 5%", end: "top -160%" };
+    } else {
+      // Mobile & Tablet
+      return { start: "top 5%", end: "top -50%" };
+    }
+  };
+
+  let { start, end } = getValues();
+
+
     gsap.to(imageDivRef.current, {
       scrollTrigger: {
         trigger: imageDivRef.current,
-        start: "top 0%",
-        end: "top -160%",
-        scrub: 1,
+        start,
+        end,
+        scrub: 0.5,
         anticipatePin: 1,
         invalidateOnRefresh: true,
         pin: true,
@@ -43,7 +59,7 @@ const Agence = () => {
         onUpdate: (element) => {
           let imageIndex;
           if (element.progress < 1) {
-            imageIndex = Math.round(element.progress * imageArray.length);
+            imageIndex = Math.floor(element.progress * imageArray.length);
           } else {
             imageIndex = imageArray.length - 1;
           }
@@ -58,7 +74,7 @@ const Agence = () => {
       <div id="page-1" className="py-1">
         <div
           ref={imageDivRef}
-          className="absolute lg:h-[20vw] h-[30vw] lg:w-[15vw] w-[20vw] lg:rounded-3xl rounded-xl lg:top-36 top-28 left-[30vw]
+          className="absolute lg:h-[20vw] h-[30vw] lg:w-[15vw] w-[20vw] lg:rounded-3xl rounded-xl lg:top-32 top-24 left-[30vw]
       overflow-hidden"
         >
           <img
@@ -75,8 +91,8 @@ const Agence = () => {
               Douze
             </h1>
           </div>
-          <div className="lg:pl-[40%] mt-4">
-            <p className="lg:text-6xl text-[20px] lg:leading-14 leading-6 lg:indent-80 indent-20">Notre
+          <div className="lg:pl-[40%] px-2 lg:mt-4 mt-20">
+            <p className="lg:text-5xl text-[20px] lg:leading-14 leading-6 lg:indent-80 indent-20">Notre
               curiosité nourrit notre créativité. On reste humbles et on dit non
               aux gros egos, même le vôtre. Une marque est vivante. Elle a des
               valeurs, une personnalité, une histoire. Si on oublie ça, on peut
