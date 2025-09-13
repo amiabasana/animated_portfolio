@@ -2,6 +2,11 @@
 
 html,body{
   scroll-behavior: smooth;
+
+  &::selection{
+    background-color: #D3FD50;
+    color: #000000;
+  }
 }
 
 @font-face{

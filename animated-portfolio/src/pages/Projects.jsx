@@ -21,7 +21,16 @@ const Projects = () => {
     {
       image1: 'https://k72.ca/uploads/caseStudies/PME-MTL/PME-MTL_Thumbnail-1280x960.jpg',
       image2: 'https://k72.ca/uploads/caseStudies/FRUITE/Fruite_thumbnail_bbq-1280x960.jpg'
-    }];
+    },
+     {
+      image1: 'https://k72.ca/uploads/caseStudies/A_table/thumbnailimage_atable2-1280x960.jpg',
+      image2: 'https://k72.ca/uploads/caseStudies/BAnQ_100TEMPS/100temps_Thumbnail-1280x960.jpg'
+    },
+     {
+      image1: 'https://k72.ca/uploads/caseStudies/CRISIS24/crisis24_behance_1920X1200_cartes-1280x960.jpg',
+      image2: 'https://k72.ca/uploads/caseStudies/SollioAg/thumbnailimage_SollioAg-1280x960.jpg'
+    },
+  ];
 
     gsap.registerPlugin(ScrollTrigger);
 
@@ -41,14 +50,15 @@ const Projects = () => {
     })
   return (
     <div className="lg:p-4 p-2">
-      <div className="pt-[40vh]">
-        <h2 className="font-[font2] lg:text-[13vw] text-6xl uppercase">
+      <div className="pt-[45vh]">
+        <h2 className="font-[font2] xl:text-[13vw] text-[11vw] uppercase leading-1">
           Projets
+          <span className="lg:text-5xl md:text-4xl text-2xl font-[font2] align-text-top">12</span>
         </h2>
       </div>
-      <div className="lg:-mt-20 parent-project">
+      <div className="xl:mt-18 lg:mt-14 md:mt-10 sm:mt-3 mt-3 parent-project">
         {projects.map(function (element, index){
-          return <div key={index} className="hero w-full lg:h-[800px] mb-4 flex lg:flex-row flex-col lg:gap-4 gap-2">
+          return <div key={index} className="hero w-full lg:h-[300px] mb-2.5 flex sm:flex-row flex-col gap-2.5">
           <ProjectCard image1={element.image1} image2={element.image2}/>
           </div>
         })}
