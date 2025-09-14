@@ -74,7 +74,7 @@ const Agence = () => {
       <div id="page-1" className="py-1">
         <div
           ref={imageDivRef}
-          className="absolute lg:h-[20vw] h-[30vw] lg:w-[15vw] w-[20vw] lg:rounded-3xl rounded-xl lg:top-32 top-24 left-[30vw]
+          className="absolute lg:h-[20vw] h-[28vw] lg:w-[15vw] w-[20vw] lg:rounded-3xl rounded-xl md:top-32 top-24 left-[30vw]
       overflow-hidden"
         >
           <img
@@ -85,14 +85,14 @@ const Agence = () => {
           />
         </div>
         <div className="font-[font2] relative">
-          <div className="lg:mt-[55.6vh] mt-[25vh]">
+          <div className="lg:mt-[55.6vh] md:mt-[45.6vh] sm:mt-[33.6vh] mt-[24.6vh]">
             <h1 className="lg:text-[20vw] text-[18vw] text-center uppercase leading-[17vw]">
               Soixan7e <br />
               Douze
             </h1>
           </div>
-          <div className="lg:pl-[40%] px-2 lg:mt-4 mt-20">
-            <p className="lg:text-5xl text-[20px] lg:leading-14 leading-6 lg:indent-80 indent-20">Notre
+          <div className="md:pl-[40%] px-2 md:mt-4 sm:mt-3 mt-16">
+            <p className="xl:text-5xl md:text-4xl sm:text-[22px] text-[20px] xl:leading-14 md:leading-12 sm:leading-8 leading-6 lg:indent-80 indent-20">Notre
               curiosité nourrit notre créativité. On reste humbles et on dit non
               aux gros egos, même le vôtre. Une marque est vivante. Elle a des
               valeurs, une personnalité, une histoire. Si on oublie ça, on peut
