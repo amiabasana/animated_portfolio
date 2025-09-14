@@ -6,8 +6,10 @@ import Navbar from "./components/navigation/Navbar";
 import FullScreenNav from "./components/navigation/FullScreenNav";
 import Contact from "./pages/Contact";
 import Blogue from "./pages/Blogue";
+import usePageTitle from "./hooks/usePageTitle";
 
 function App() {
+  usePageTitle();
   return (
     <div className="overflow-x-hidden">
       <Navbar />

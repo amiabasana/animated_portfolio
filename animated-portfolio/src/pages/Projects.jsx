@@ -51,14 +51,14 @@ const Projects = () => {
   return (
     <div className="lg:p-4 p-2">
       <div className="pt-[45vh]">
-        <h2 className="font-[font2] xl:text-[13vw] text-[11vw] uppercase leading-1">
+        <h2 className="font-[font2] sm:text-[13vw] text-[17vw] uppercase leading-1">
           Projets
           <span className="lg:text-5xl md:text-4xl text-2xl font-[font2] align-text-top">12</span>
         </h2>
       </div>
-      <div className="xl:mt-18 lg:mt-14 md:mt-10 sm:mt-3 mt-3 parent-project">
+      <div className="2xl:mt-22 xl:mt-18 lg:mt-14 md:mt-10 sm:mt-8 mt-8 parent-project">
         {projects.map(function (element, index){
-          return <div key={index} className="hero w-full lg:h-[300px] mb-2.5 flex sm:flex-row flex-col gap-2.5">
+          return <div key={index} className={`hero w-full lg:h-[300px] flex sm:flex-row flex-col gap-2.5 ${index === projects.length - 1 ? "mb-0" : "mb-2.5"}`}>
           <ProjectCard image1={element.image1} image2={element.image2}/>
           </div>
         })}
