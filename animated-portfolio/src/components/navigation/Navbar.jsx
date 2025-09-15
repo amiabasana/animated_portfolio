@@ -1,12 +1,13 @@
-import React, { useContext, useRef } from "react";
+import React, { useContext, useRef, useState } from "react";
 import { NavbarContext } from "../../context/NavContext";
 
 const Navbar = () => {
     const navRightRef = useRef(null);
     const [navOpen, setNavOpen] = useContext(NavbarContext);
+    const [hover,setHover] = useState(false);
   return (
     <div className="fixed top-0 w-full items-start justify-between flex z-10">
-      <div className="lg:p-5 p-2">
+      <div className="lg:p-3">
         <div className="lg:w-28 w-24">
           <svg
             className="w-full"
@@ -22,17 +23,19 @@ const Navbar = () => {
         </div>
       </div>
       <div onMouseEnter={() => {
-        navRightRef.current.style.height = '100%'
+        navRightRef.current.style.height = '100%',
+        setHover(true);
       }} 
       onMouseLeave={() => {
         navRightRef.current.style.height = "0%"
+        setHover(false);
       }}
       onClick={() => setNavOpen(true)}
-      className="lg:h-16 h-11 lg:w-[16vw] w-40 bg-black relative cursor-pointer">
+      className="lg:h-14 h-11 lg:w-[16vw] w-40 bg-black relative cursor-pointer">
         <div ref={navRightRef} className="bg-[#D3FD50] absolute top-0 h-0 w-full transition-all"></div>
         <div className="relative flex items-end flex-col lg:gap-1.5 gap-1 justify-center h-full lg:px-12 px-8">
-          <div className="lg:w-14 w-12 lg:h-0.5 h-[1.5px] bg-white"></div>
-          <div className="lg:w-8 w-6 lg:h-0.5 h-[1.5px] bg-white"></div>
+          <div className={`lg:w-14 w-12 lg:h-0.5 h-[1.5px] transition-colors ${hover ? 'bg-black' : 'bg-white'}`}></div>
+          <div className={`lg:w-8 w-6 lg:h-0.5 h-[1.5px] transition-colors ${hover ? 'bg-black' : 'bg-white'}`}></div>
         </div>
       </div>
     </div>
