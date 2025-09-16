@@ -89,7 +89,7 @@ const FullScreenNav = () => {
         </div>
       </div>
 
-      <div className="relative">
+      {navOpen && <div className="relative">
         <div className="navlink flex w-full items-start justify-between lg:p-5 p-2">
           <div>
             <div className="lg:w-28 w-24">
@@ -309,7 +309,7 @@ const FullScreenNav = () => {
             </h3>
           </div>
         </div>
-      </div>
+      </div>}
     </div>
   );
 };

@@ -7,20 +7,23 @@ import FullScreenNav from "./components/navigation/FullScreenNav";
 import Contact from "./pages/Contact";
 import Blogue from "./pages/Blogue";
 import usePageTitle from "./hooks/usePageTitle";
+import { useContext } from "react";
+import { NavbarContext } from "./context/NavContext";
 
 function App() {
   usePageTitle();
+  const {navOpen, setNavOpen} = useContext(NavbarContext);
   return (
-    <div className="overflow-x-hidden">
+    <div className="overflow-hidden">
       <Navbar />
       <FullScreenNav />
-      <Routes>
+      {!navOpen && <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/agence" element={<Agence />} />
         <Route path="/projects" element={<Projects />} />
         <Route path="/contact" element={<Contact/>}/>
         <Route path="/blogue" element={<Blogue/>}/>
-      </Routes>
+      </Routes>}
     </div>
   );
 }
