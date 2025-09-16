@@ -11,7 +11,7 @@ import usePageTitle from "./hooks/usePageTitle";
 function App() {
   usePageTitle();
   return (
-    <div className="overflow-hidden">
+    <div className="overflow-x-hidden">
       <Navbar />
       <FullScreenNav />
       <Routes>

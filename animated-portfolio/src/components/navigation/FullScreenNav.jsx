@@ -5,9 +5,8 @@ import { NavbarContext } from "../../context/NavContext";
 import { Link } from "react-router-dom";
 
 const FullScreenNav = () => {
-  const fullNavLinksRef = useRef(null);
   const fullScreenRef = useRef(null);
-  const [navOpen, setNavOpen] = useContext(NavbarContext);
+  const {navOpen, setNavOpen} = useContext(NavbarContext);
 
   function gsapAnimation() {
     const tl = gsap.timeline();
@@ -90,7 +89,7 @@ const FullScreenNav = () => {
         </div>
       </div>
 
-      <div ref={fullNavLinksRef} className="relative">
+      <div className="relative">
         <div className="navlink flex w-full items-start justify-between lg:p-5 p-2">
           <div>
             <div className="lg:w-28 w-24">
