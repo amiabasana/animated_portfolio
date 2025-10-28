@@ -1,15 +1,27 @@
 import React, { useContext, useRef, useState } from "react";
-import { NavbarContext, NavColorContext} from "../../context/NavContext";
+import { NavbarContext, NavColorContext } from "../../context/NavContext";
+import { useLocation, useNavigate } from "react-router-dom";
 
 const Navbar = () => {
-    const navRightRef = useRef(null);
-    const {navOpen, setNavOpen} = useContext(NavbarContext);
-    const {navColor, setNavColor} = useContext(NavColorContext);
-    const [hover,setHover] = useState(false);
+  const navRightRef = useRef(null);
+  const { navOpen, setNavOpen } = useContext(NavbarContext);
+  const { navColor, setNavColor } = useContext(NavColorContext);
+  const [hover, setHover] = useState(false);
+  const navigate = useNavigate();
+  const redirectToFullNav = () => {
+    navigate("/fullnav");
+    setNavOpen(true);
+  };
+  const redirectToProjects = () => {
+    navigate("/projects");
+    setNavOpen(false);
+  };
+  const { pathname } = useLocation();
+  console.log("pathname", pathname);
   return (
     <div className="fixed top-0 w-full items-start justify-between flex z-10">
       <div className="lg:p-3">
-        <div className="lg:w-28 w-24">
+        <div className="lg:w-28 w-24" >
           <svg
             className="w-full"
             xmlns="http://www.w3.org/2000/svg"
@@ -23,22 +35,45 @@ const Navbar = () => {
           </svg>
         </div>
       </div>
-      <div onMouseEnter={() => {
-        navRightRef.current.style.height = '100%',
-        setHover(true);
-      }} 
-      onMouseLeave={() => {
-        navRightRef.current.style.height = "0%"
-        setHover(false);
-      }}
-      onClick={() => setNavOpen(true)}
-      className="lg:h-14 h-11 lg:w-[16vw] w-40 bg-black relative cursor-pointer">
-        <div ref={navRightRef} className="bg-[#D3FD50] absolute top-0 h-0 w-full transition-all"></div>
-        <div className="relative flex items-end flex-col lg:gap-1.5 gap-1 justify-center h-full lg:px-12 px-8">
-          <div className={`lg:w-14 w-12 lg:h-0.5 h-[1.5px] transition-colors ${hover ? 'bg-black' : 'bg-white'}`}></div>
-          <div className={`lg:w-8 w-6 lg:h-0.5 h-[1.5px] transition-colors ${hover ? 'bg-black' : 'bg-white'}`}></div>
+      {pathname == "/projects" && (
+        <div
+          onMouseEnter={() => {
+            (navRightRef.current.style.height = "100%"), setHover(true);
+          }}
+          onMouseLeave={() => {
+            navRightRef.current.style.height = "0%";
+            setHover(false);
+          }}
+          onClick={redirectToFullNav}
+          className="lg:h-14 h-11 lg:w-[16vw] w-40 bg-black relative cursor-pointer"
+        >
+          <div
+            ref={navRightRef}
+            className="bg-[#D3FD50] absolute top-0 h-0 w-full transition-all"
+          ></div>
+          <div className="relative flex items-end flex-col lg:gap-1.5 gap-1 justify-center h-full lg:px-12 px-8">
+            <div
+              className={`lg:w-14 w-12 lg:h-0.5 h-[1.5px] transition-colors ${
+                hover ? "bg-black" : "bg-white"
+              }`}
+            ></div>
+            <div
+              className={`lg:w-8 w-6 lg:h-0.5 h-[1.5px] transition-colors ${
+                hover ? "bg-black" : "bg-white"
+              }`}
+            ></div>
+          </div>
         </div>
-      </div>
+      )}
+      {/* {(pathname == "/fullnav" || navOpen) && (
+        <div
+          className="lg:h-28 h-20 lg:w-28 w-20 relative cursor-pointer"
+          onClick={redirectToProjects}
+        >
+          <div className="absolute bg-red-500 lg:h-40 h-28 lg:w-1 w-0.5 -rotate-45 origin-top"></div>
+          <div className="absolute bg-red-500 lg:h-40 h-28 lg:w-1 w-0.5 rotate-45 origin-top right-0"></div>
+        </div>
+      )} */}
     </div>
   );
 };
