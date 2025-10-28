@@ -1,12 +1,22 @@
-import React, { useContext, useRef } from "react";
+import React, { useContext, useEffect, useRef } from "react";
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import { NavbarContext } from "../../context/NavContext";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const FullScreenNav = () => {
   const fullScreenRef = useRef(null);
   const {navOpen, setNavOpen} = useContext(NavbarContext);
+
+  const navigate = useNavigate();
+  const redirectToFullNav = () => {
+    navigate("/menu");
+    setNavOpen(true);
+  };
+  const redirectToProjects = () => {
+    navigate("/projects");
+    setNavOpen(false);
+  };
 
   function gsapAnimation() {
     const tl = gsap.timeline();
@@ -65,7 +75,7 @@ const FullScreenNav = () => {
     });
   }
 
-  useGSAP(() => {
+  useEffect(() => {
     if (navOpen) {
       gsapAnimation();
     } else {
@@ -92,7 +102,7 @@ const FullScreenNav = () => {
       {navOpen && <div className="relative">
         <div className="navlink flex w-full items-start justify-between lg:p-5 p-2">
           <div>
-            <div className="lg:w-28 w-24">
+            <div className="lg:w-28 w-24" onClick={redirectToProjects}>
               <svg
                 className="w-full"
                 xmlns="http://www.w3.org/2000/svg"
@@ -107,13 +117,13 @@ const FullScreenNav = () => {
             </div>
           </div>
 
-          <div
-            className="lg:h-28 h-20 lg:w-28 w-20 relative cursor-pointer"
-            onClick={() => setNavOpen(false)}
-          >
-            <div className="absolute hover:bg-[#D3FD50] bg-white lg:h-40 h-28 lg:w-1 w-0.5 -rotate-45 origin-top"></div>
-            <div className="absolute hover:bg-[#D3FD50] bg-white lg:h-40 h-28 lg:w-1 w-0.5 rotate-45 origin-top right-0"></div>
-          </div>
+              {/* <div
+                className="lg:h-28 h-20 lg:w-28 w-20 relative cursor-pointer"
+                onClick={() => setNavOpen(false)}
+              >
+                <div className="absolute hover:bg-[#D3FD50] bg-white lg:h-40 h-28 lg:w-1 w-0.5 -rotate-45 origin-top"></div>
+                <div className="absolute hover:bg-[#D3FD50] bg-white lg:h-40 h-28 lg:w-1 w-0.5 rotate-45 origin-top right-0"></div>
+              </div> */}
         </div>
 
         <div className="lg:py-36 py-52">
