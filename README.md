@@ -127,7 +127,7 @@ animated_portfolio/
    ```
 2. Add to `package.json`:
    ```json
-   "homepage": "https://yourusername.github.io/animated_portfolio",
+   "homepage": "https://amiabasana.github.io/animated_portfolio",
    "scripts": {
      "predeploy": "npm run build",
      "deploy": "gh-pages -d build"
